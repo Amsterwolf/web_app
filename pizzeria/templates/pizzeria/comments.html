@@ -1,0 +1,12 @@
+{%extends 'pizzeria/base.html'%}
+{%block content%}
+<p>Comments:</p>
+
+<ul>
+    {%for c in comments%}
+      <li>{{c}}</li>
+    {%empty%}
+      <li>No comments</li>
+    {%endfor%}
+</ul>
+{%endblock content%}

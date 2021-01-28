@@ -1,0 +1,16 @@
+{%extends "sub_tiktok/base.html"%}
+{% block content%}
+<p>Topic Name:{{topic}}</p>
+
+<ul>
+    {%for e in entries %}
+      <li>
+        <p>{{e.date_added|date:'M d, Y H:i'}}</p>
+        <p>{{e.text|linebreaks}}</p>
+      </li>
+    {%empty%}
+      <li>no entries for the topic.</li>
+    {%endfor%}
+</ul>
+
+{% endblock content%}

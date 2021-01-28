@@ -1,0 +1,15 @@
+{%extends 'pizzeria/base.html'%}
+{%block content%}
+<p>Pizza Name:{{pizza}}</p>
+
+<ul>
+    {%for t in toppings%}
+      <li>
+        <p>{{t.date_added|date:'M d, Y H:i'}}</p>
+        <p>{{t.name|linebreaks}}</p>
+      </li>
+    {%empty%}
+      <li>No toppings</li>
+    {%endfor%}
+</ul>
+{%endblock content%}

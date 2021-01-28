@@ -1,0 +1,13 @@
+{%extends "sub_tiktok/base.html"%}
+{% block content%}
+<p>Toptics:</p>
+
+<ul>
+    {%for topic in topics %}
+      <a href="{%url 'tiktok:topic' topic.id%}">{{topic}}</a>
+    {%empty%}
+      <li>no topics have been added yet.</li>
+    {%endfor%}
+</ul>
+
+{% endblock content%}
