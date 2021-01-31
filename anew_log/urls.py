@@ -19,5 +19,6 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tiktok/',include('tiktok.urls')),
-    path('pizzeria/',include('pizzeria.urls'))
+    path('pizzeria/',include('pizzeria.urls')),
+    path('users/',include('users.urls')),
 ]

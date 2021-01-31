@@ -1,12 +1,13 @@
 {%extends "sub_tiktok/base.html"%}
 {% block content%}
 <p>Topic Name:{{topic}}</p>
-
+<a href="{% url 'tiktok:new_entry' topic.id %}">Add a new entry of {{topic}}</a>
 <ul>
     {%for e in entries %}
       <li>
         <p>{{e.date_added|date:'M d, Y H:i'}}</p>
         <p>{{e.text|linebreaks}}</p>
+        <a href="{%url 'tiktok:edit_entry' e.id %}">Edit the entry</a>
       </li>
     {%empty%}
       <li>no entries for the topic.</li>

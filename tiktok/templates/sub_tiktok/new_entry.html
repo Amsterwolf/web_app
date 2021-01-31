@@ -1,0 +1,12 @@
+{%extends "sub_tiktok/base.html"%}
+{% block content%}
+<p><a href="{% url 'tiktok:topic' topic.id %}">{{topic}}</a></p>
+<p>Add a new Entry:</p>
+  
+<form action="{%url 'tiktok:new_entry' topic.id %}" method='post' >
+  {% csrf_token %}<!--防止攻击-->
+  {{form.as_p}}<!--显示表单-->
+  <button name="submit">Add Entry to {{topic}}</button>
+</form>
+
+{% endblock content%}
