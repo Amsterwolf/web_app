@@ -1,17 +1,28 @@
-{%extends "sub_tiktok/base.html"%}
-{% block content%}
-<p>Topic Name:{{topic}}</p>
-<a href="{% url 'tiktok:new_entry' topic.id %}">Add a new entry of {{topic}}</a>
-<ul>
-    {%for e in entries %}
-      <li>
-        <p>{{e.date_added|date:'M d, Y H:i'}}</p>
-        <p>{{e.text|linebreaks}}</p>
-        <a href="{%url 'tiktok:edit_entry' e.id %}">Edit the entry</a>
-      </li>
-    {%empty%}
-      <li>no entries for the topic.</li>
-    {%endfor%}
-</ul>
+{% extends 'sub_tiktok/base.html' %}
 
-{% endblock content%}
+{% block page_header %}
+  <h3>{{ topic }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+  <p>
+    <a href="{% url 'tiktok:new_entry' topic.id %}">Add new entry</a>
+  </p>
+
+  <ul>
+  {% for entry in entries %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ entry.date_added|date:'M d, Y H:i' }}
+        <small><a href="{% url 'tiktok:edit_entry' entry.id %}">
+            edit entry</a></small>
+      </h4>
+      <div class="card-body">
+        {{ entry.text|linebreaks }}
+      </div>
+    </div>
+  {% empty %}
+    <p>There are no entries for this topic yet.</p>
+  {% endfor %}
+
+{% endblock content %}
